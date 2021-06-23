@@ -31,7 +31,7 @@ $db = [
         'question' => "Quando faccio clic sui risultati della Ricerca Google, le mie chiavi di ricerca vengono inviate ai siti web?",
         'answer' => "In alcuni casi sì. Quando fai clic su un risultato della Ricerca Google, il tuo browser web potrebbe reindirizzare alla pagina web di destinazione anche l'indirizzo Internet, o URL, della pagina dei risultati di ricerca sotto forma di URL referrer. Talvolta, l'URL della pagina dei risultati di ricerca potrebbe contenere la query di ricerca che hai inserito. Se utilizzi la ricerca SSL (la funzione di ricerca criptata di Google), nella maggior parte dei casi i termini di ricerca non vengono inviati come parte dell'URL negli URL referrer. Questo comportamento può fare eccezione, ad esempio se utilizzi alcuni browser meno diffusi. Ulteriori informazioni sulla ricerca SSL sono disponibili qui. Le query di ricerca o le informazioni contenute nell'URL referrer potrebbero essere disponibili mediante Google Analytics o un'API (Application Programming Interface). Inoltre, gli inserzionisti potrebbero ricevere informazioni relative all' esatte parole chiave che hanno determinato il clic su un annuncio.",
     ],
-]
+];
 
 ?>
 
@@ -45,13 +45,65 @@ $db = [
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domande Frequenti </title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <header>
-        <img src="https://1000marche.net/wp-content/uploads/2020/03/Google-logo.png" alt="Google logo">
-        <span><a href="#">Privacy e termini</a></span>
-    </header>
+
+    <div id="app">
+
+
+        <!-- HEADER -->
+        <header>
+            <img class="logo" src="https://1000marche.net/wp-content/uploads/2020/03/Google-logo.png" alt="Google logo">
+            <a href="#">Privacy e termini</a>
+
+            <nav>
+                <ul>
+                    <li v-for="(item, index) in menu">
+                        <div :class="counter === index ? 'bg_bottom_blue' : '' ">
+                            <a href="#" @click="clicked(index)" :class="counter === index ? 'color_blue' : '' "> {{ item }} </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!-- /HEADER -->
+
+        <!-- MAIN -->
+        <main>
+            <div class="container">
+                <?php foreach ($db as $key) {
+                    foreach ($key as $k => $value) {
+                        if ($k === 'question') {
+                ?>
+                            <h2><?php echo $value ?></h2>
+
+                        <?php
+                        } else { ?>
+                            <p class="answer"><?php echo $value ?></p>
+                <?php       }
+                    }
+                } ?>
+            </div>
+        </main>
+        <!-- /MAIN -->
+
+        <!-- FOOTER -->
+        <!-- /FOOTER -->
+    </div>
+    <!-- VUEJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <!-- JS -->
+    <script src="./main.js"></script>
 
 </body>
 
