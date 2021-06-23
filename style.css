@@ -9,8 +9,8 @@ body {
 }
 
 .container {
-    width: 80%;
-    margin: auto;
+    width: 55%;
+    margin: 5rem auto;
 }
 
 /* HEADER */
@@ -62,8 +62,17 @@ nav div {
 /* /HEADER */
 
 /* MAIN */
+
 .answer {
     margin: 1rem 0;
 }
 
 /* /MAIN */
+
+/* FOOTER */
+footer {
+    background-color: lightgray;
+    height: 3rem;
+}
+
+/* /FOOTER */
